@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ehr_web
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/html
+      - ./uploads:/var/www/html/uploads
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: ehrdb
+      DB_USERNAME: root
+      DB_PASSWORD: 
+      APP_ENV: development
+      APP_DEBUG: true
+      APP_URL: http://localhost:8080
+  
+  db:
+    image: mysql:8.0
+    container_name: ehr_db
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password --bind-address=0.0.0.0
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: ehrdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./ehrdb.sql:/docker-entrypoint-initdb.d/ehrdb.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ehr_phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: 127.0.0.1
+      MYSQL_ROOT_PASSWORD: 
+    volumes:
+      - ./config.inc.php:/etc/phpmyadmin/config.inc.php
+
+volumes:
+  mysql_data:

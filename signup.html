@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client"></script>
+
+
+    <title>Student Sign Up</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+
+            font-size: 18px; /* Adjust to suit the design */
+            background-color: #e9ecef; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            flex-direction: column; 
+            height: 88vh; 
+            margin: 0; 
+            background-image: url(image6.jpeg);
+            background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+        }
+
+                
+
+        .form-container { 
+            background-color: rgba(173, 216, 230, 0.80); /* Light blue background with transparency */
+            padding: 20px; /* Decreased padding to reduce height */
+            border-radius: 10px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+            width: 90%; /* Responsive width */
+            max-width: 400px;
+            max-height: auto; /* Sets a maximum height */
+            transition: box-shadow 0.3s ease;
+            
+            
+
+           
+        }
+        
+        
+        .form-container:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #007bff; 
+            font-size: 24px; 
+        }
+        .form-container hr {
+            border: 0;
+            height: 1px;
+            background-color: #007bff; 
+            margin: 20px 0; 
+        }
+        .form-container h2 { 
+            text-align: center; 
+            margin-bottom: 10px; 
+            color: #343a40; 
+        }
+        .form-container input[type="text"], 
+        .form-container input[type="password"], 
+        .form-container input[type="email"] { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+
+            width: 92.3%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            border: 1px solid #ced4da; 
+            transition: border-color 0.3s ease; 
+        }
+        .form-container input:focus { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+
+            border-color: #007bff; 
+            outline: none; 
+        }
+        .form-container button { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+
+            width: 100%; 
+            padding: 12px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+            margin-top: 10px;
+
+        }
+        .form-container button:hover { 
+            background-color: #0056b3; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+        }
+        .form-container a { 
+            text-align: center; 
+            display: block; 
+            margin-top: 15px; 
+            color: #007bff; 
+            text-decoration: none; 
+            font-size: 14px; 
+        }
+        .form-container a:hover { 
+            text-decoration: underline; 
+        }
+
+        .form-container .login-btn {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+
+            margin-top: 15px;
+            width: 100%; 
+            padding: 12px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+        }
+        footer {
+            text-align: center;
+            margin-top: -10px;
+            font-size: 14px;
+            color: #6c757d; 
+        }
+
+        .login-option a {
+            color: #007bff; /* Blue color for the link */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Make the text bold */
+        }
+        
+        .login-option a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                background-size: cover; /* Keep background scaling */
+            }
+
+            .form-container {
+                padding: 15px; /* Reduce padding on smaller screens */
+            }
+
+            .form-container h1 {
+                font-size: 20px; /* Smaller font size for mobile */
+            }
+
+            .form-container h2 {
+                font-size: 16px;
+            }
+
+            .form-container input[type="email"],
+            .form-container input[type="password"] {
+                font-size: 14px; /* Adjust input font size for mobile */
+            }
+
+            .form-container button {
+                font-size: 14px;
+            }
+        }
+
+        .toggle-password {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .toggle-password i {
+            position: absolute;
+            right: 12px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>SKSU SCHOOL CLINIC </h1> <h1> STUDENT REGISTRATION</h1>
+        <hr>
+    
+        <div id="successMessage" class="success-message" style="display: none;">
+            Form submitted successfully!
+        </div>
+        <form id="signupForm" action="form.php" method="GET">
+            <input type="text" id="IDNumber" name="IDNumber" placeholder="Enter ID Number" required />
+            <input type="email" id="GmailAccount" name="GmailAccount" placeholder="example@sksu.edu.ph" required  />
+            
+            <div class="toggle-password">
+                <input type="password" id="password" name="password" placeholder="Create Password" required minlength="8" />
+                <i id="icon" class="fas fa-eye" onclick="togglePassword('password', 'icon')"></i>
+            </div>
+            
+            <div class="toggle-password">
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
+                <i id="confirmIcon" class="fas fa-eye" onclick="togglePassword('confirmPassword', 'confirmIcon')"></i>
+            </div>
+            <div id="g_id_onload"
+            data-client_id="481523391881-hij1s70f5it5c3efsh21cvr844klniu6.apps.googleusercontent.com"
+            data-context="signup"
+            data-ux_mode="popup"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false">
+       </div>
+       <div class="g_id_signin" data-type="standard"></div>
+       
+            <button type="submit">Sign Up</button>
+        </form>
+        
+        <p id="message"></p>
+    
+        <!-- Cloud message for account warning -->
+        <div id="accountWarning" class="cloud-message" style="display: none;">
+           
+            Signup in Google using your SKSU account. It will be used to send events and health alerts.
+        </div>
+    
+        <footer>
+            <div class="login-option" style="text-align: center; margin-top: 20px;">
+                <footer>If you're already registered, please <a href="login.html" style="color: #007bff; text-decoration: none;"> Login</a></footer>
+            </div>
+        </footer>
+       
+    </div>
+    
+    <script>
+        // Handle the response from Google Sign-In
+        function handleCredentialResponse(response) {
+            const messageElement = document.getElementById('message');
+            try {
+                const decodedToken = jwt_decode(response.credential);
+                const email = decodedToken.email;
+    
+                // Validate if email is @sksu.edu.ph
+                const gmailRegex = /^[a-zA-Z]+@sksu\.edu\.ph$/;
+                if (!gmailRegex.test(email)) {
+                    messageElement.textContent = 'The provided Gmail is not associated with SKSU.';
+                    messageElement.style.color = 'red';
+                    return;
+                }
+    
+                // Perform additional checks if needed (e.g., is the email already in use?)
+                messageElement.textContent = 'Email verified successfully!';
+                messageElement.style.color = 'green';
+    
+                // Proceed with registration
+                document.getElementById('GmailAccount').value = email;
+            } catch (error) {
+                console.error('Error decoding token:', error);
+                messageElement.textContent = 'Failed to verify email. Please try again.';
+                messageElement.style.color = 'red';
+            }
+        }
+    
+        // Load the JWT Decode library (or you can use a CDN link)
+        function loadJwtDecodeLibrary() {
+            const script = document.createElement('script');
+            script.src = "https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js";
+            document.body.appendChild(script);
+        }
+    
+        // Load the library on page load
+        loadJwtDecodeLibrary();
+    </script>
+    
+    <style>
+        .cloud-message {
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #e0e0e0; /* Light border for a soft appearance */
+            border-radius: 20px; /* Rounded corners for cloud effect */
+            padding: 15px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100px; /* Adjust to position just below the Gmail input */
+            width: 80%; /* Default width */
+            max-width: 600px; /* Set a maximum width */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            z-index: 1000; /* Ensure it is above other elements */
+            transition: all 0.3s ease; /* Smooth transition */
+            animation: fadeIn 0.5s; /* Optional: fade-in animation */
+            text-align: center; /* Center the text */
+            font-family: 'Arial', sans-serif; /* Font style */
+            color: #333; /* Darker text for contrast */
+            margin-top: -60px;
+        }
+    
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .cloud-message {
+                width: 90%; /* Increase width on smaller screens */
+                top: 90px; /* Adjust positioning just below the Gmail input */
+                padding: 10px; /* Decrease padding for smaller screens */
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .cloud-message {
+                width: 90%; /* Max width on very small screens */
+                top: 80px; /* Adjust positioning for very small screens */
+                padding: 8px; /* Further decrease padding */
+                font-size: 14px; /* Slightly smaller font size */
+            }
+        }
+    </style>
+    
+    <script>
+        function togglePassword(inputId, iconId) {
+            const passwordField = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+        
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        
+    
+        // Show account warning when Gmail input is focused
+        document.getElementById('GmailAccount').addEventListener('focus', function() {
+            const accountWarning = document.getElementById('accountWarning');
+            accountWarning.style.display = 'block'; // Show the warning
+        });
+    
+        // Hide account warning when Gmail input is blurred (optional)
+        document.getElementById('GmailAccount').addEventListener('blur', function() {
+            const accountWarning = document.getElementById('accountWarning');
+            accountWarning.style.display = 'none'; // Hide the warning
+        });
+    
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+    
+            const IDNumber = document.getElementById('IDNumber').value;
+            const GmailAccount = document.getElementById('GmailAccount').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const messageElement = document.getElementById('message');
+    
+            const gmailRegex = /^[a-zA-Z]+@sksu\.edu\.ph$/;
+            if (!gmailRegex.test(GmailAccount)) {
+                messageElement.textContent = 'Please enter a valid Gmail account (e.g., yourfullname@sksu.edu.ph).';
+                messageElement.style.color = 'red';
+                return;
+            }
+            
+// Validate ID number as a string with letters and numbers, no length limit
+const idNumberRegex = /^[a-zA-Z0-9]+$/;
+if (!idNumberRegex.test(IDNumber)) {
+    messageElement.textContent = 'ID number must contain only letters and numbers.';
+    messageElement.style.color = 'red';
+    return;
+}
+
+
+    
+            // Validate that password and confirmPassword match
+            if (password !== confirmPassword) {
+                messageElement.textContent = 'Passwords do not match. Please try again.';
+                messageElement.style.color = 'red';
+                return;
+            }
+    
+            // Send data to the PHP backend using Fetch API
+            fetch('signup.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    IDNumber: IDNumber,
+                    GmailAccount: GmailAccount,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    messageElement.textContent = 'Sign-up successful!';
+                    messageElement.style.color = 'green';
+                    setTimeout(() => {
+                        window.location.href = `form.php?IDNumber=${IDNumber}&GmailAccount=${GmailAccount}`;
+                    }, 1000); // Redirect after 1 second
+                } else {
+                    messageElement.textContent = 'Error: ' + data.message;
+                    messageElement.style.color = 'red';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                messageElement.textContent = 'An error occurred. Please try again.';
+                messageElement.style.color = 'red';
+            });
+        });
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCUsYOs-sYSAp-90rc9bDHDfLM_P9LBZkE",
+          authDomain: "ehrsksu.firebaseapp.com",
+          projectId: "ehrsksu",
+          storageBucket: "ehrsksu.firebasestorage.app",
+          messagingSenderId: "31004474453",
+          appId: "1:31004474453:web:2a921ef08833605754a8dc",
+          measurementId: "G-FYBKXZDJ0V"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>    

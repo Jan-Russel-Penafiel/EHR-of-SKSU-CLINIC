@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Login</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 18px;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling */
+            background-image: url(image6.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+    
+        .form-container { 
+            background-color: rgba(173, 216, 230, 0.80);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            transition: box-shadow 0.3s ease;
+            margin-bottom: 70px;
+        }
+        .form-container:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #007bff;
+            font-size: 24px;
+        }
+        .form-container hr {
+            border: 0;
+            height: 1px;
+            background-color: #007bff;
+            margin: 20px 0;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+        .form-container input[type="text"], 
+        .form-container input[type="password"], 
+        .form-container input[type="email"] { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+            width: 92.3%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            transition: border-color 0.3s ease;
+        }
+        .form-container input:focus { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+            border-color: #007bff;
+            outline: none;
+        }
+        .form-container button { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .form-container button:hover { 
+            background: linear-gradient(90deg, #0056b3, #003d80);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        .form-container button:active { 
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #6c757d;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean font */
+        }
+    
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                background-size: cover;
+            }
+    
+            .form-container {
+                padding: 15px;
+            }
+    
+            .form-container h1 {
+                font-size: 20px;
+            }
+    
+            .form-container h2 {
+                font-size: 16px;
+            }
+    
+            .form-container input[type="email"],
+            .form-container input[type="password"] {
+                font-size: 14px;
+            }
+    
+            .form-container button {
+                font-size: 14px;
+            }
+        }
+        .toggle-password {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .toggle-password i {
+            position: absolute;
+            right: 12px;
+            cursor: pointer;
+        }
+        .forgot-password-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .forgot-password-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>WELCOME TO SKSU SCHOOL CLINIC LOGIN</h1>
+        <hr>
+        
+        <form id="loginForm">
+            <input type="email" id="GmailAccount" name="GmailAccount" placeholder="Enter Gmail Account" required />
+            <div class="toggle-password">
+                <input type="password" id="password" name="password" placeholder="Enter Password" required />
+                <i id="icon" class="fas fa-eye" onclick="togglePassword()"></i>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+
+       
+
+        <!-- Forgot Password link -->
+        <button type="button" id="forgotPasswordBtn" class="forgot-password-link">Forgot Password?</button>
+    
+        <!-- Modal -->
+        <div id="forgotPasswordModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>Reset Your Password</h2>
+                <form id="forgotPasswordForm">
+                    <input 
+                        type="email" 
+                        id="GmailAccountReset" 
+                        name="GmailAccount" 
+                        placeholder="Enter your Gmail Account" 
+                        required 
+                        pattern="[a-zA-Z]+@sksu\.edu\.ph" 
+                        title="Please enter a valid email address ending with @sksu.edu.ph" 
+                    />
+                    <button type="submit">Send OTP</button>
+                </form>
+
+                <div id="otpSection" style="display:none;">
+                    <input type="text" id="otp" placeholder="Enter OTP" required />
+                    <input 
+                        type="password" 
+                        id="newPassword" 
+                        placeholder="Enter new password" 
+                        required 
+                        minlength="8" 
+                        title="Password must be at least 8 characters long" 
+                    />
+                    <button id="resetPasswordBtn">Reset Password</button>
+                </div>
+
+                <p id="resetMessage"></p>
+            </div>
+        </div>
+        <p id="message" style="color: red;"></p>
+    </div>
+
+    <script>
+        // Function to toggle password visibility
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const icon = document.getElementById('icon');
+    
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+    
+        const modal = document.getElementById('forgotPasswordModal');
+        const btn = document.getElementById('forgotPasswordBtn');
+        const closeModal = document.getElementById('closeModal');
+        const resetMessage = document.getElementById('resetMessage');
+        const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+        const otpSection = document.getElementById('otpSection');
+        const resetPasswordBtn = document.getElementById('resetPasswordBtn');
+    
+        // Open the modal
+        btn.onclick = () => (modal.style.display = 'block');
+    
+        // Close the modal
+        closeModal.onclick = () => (modal.style.display = 'none');
+        window.onclick = (event) => {
+            if (event.target === modal) modal.style.display = 'none';
+        };
+    
+        // Handle Forgot Password form submission
+        forgotPasswordForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const GmailAccount = document.getElementById('GmailAccountReset').value;
+            const emailRegex = /^[a-zA-Z]+@sksu\.edu\.ph$/;
+    
+            if (!emailRegex.test(GmailAccount)) {
+                resetMessage.textContent = 'Error: Email must end with @sksu.edu.ph';
+                resetMessage.style.color = 'red';
+                return;
+            }
+    
+            // Send OTP request to backend
+            fetch('otp_generation_backend.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ GmailAccount }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        resetMessage.textContent = 'OTP sent to your email.';
+                        resetMessage.style.color = 'green';
+                        otpSection.style.display = 'block';
+                    } else {
+                        resetMessage.textContent = 'Error: ' + data.message;
+                        resetMessage.style.color = 'red';
+                    }
+                })
+                .catch(() => {
+                    resetMessage.textContent = 'An error occurred. Please try again.';
+                    resetMessage.style.color = 'red';
+                });
+        });
+    
+        // Handle OTP verification and password reset
+        resetPasswordBtn.addEventListener('click', () => {
+            const GmailAccount = document.getElementById('GmailAccountReset').value;
+            const otp = document.getElementById('otp').value;
+            const newPassword = document.getElementById('newPassword').value;
+    
+            if (otp.length !== 6) {
+                resetMessage.textContent = 'Error: OTP must be 6 digits.';
+                resetMessage.style.color = 'red';
+                return;
+            }
+    
+            if (newPassword.length < 8) {
+                resetMessage.textContent = 'Error: Password must be at least 8 characters long.';
+                resetMessage.style.color = 'red';
+                return;
+            }
+    
+            // Send reset password request to backend
+            fetch('forgot_password_backend.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ GmailAccount, otp, newPassword }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        resetMessage.textContent = 'Password successfully reset!';
+                        resetMessage.style.color = 'green';
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+    
+                            // Reset the form fields and hide OTP section
+                            document.getElementById('otp').value = ''; // Clear OTP input
+                            document.getElementById('newPassword').value = ''; // Clear new password input
+                            otpSection.style.display = 'none'; // Hide OTP section
+                        }, 1000);
+                    } else {
+                        resetMessage.textContent = 'Error: ' + data.message;
+                        resetMessage.style.color = 'red';
+                    }
+                })
+                .catch(() => {
+                    resetMessage.textContent = 'An error occurred. Please try again.';
+                    resetMessage.style.color = 'red';
+                });
+        });
+      // Reset the modal count on login
+      function resetModalCountOnLogin() {
+        localStorage.removeItem('medicineModalCount');
+    }
+        // Handle Login form submission
+        document.getElementById('loginForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const GmailAccount = document.getElementById('GmailAccount').value;
+            const password = document.getElementById('password').value;
+            const messageElement = document.getElementById('message');
+    
+            const gmailRegex = /^[a-zA-Z]+@sksu\.edu\.ph$/;
+    
+            if (!gmailRegex.test(GmailAccount)) {
+                messageElement.textContent = 'Invalid email format.';
+                messageElement.style.color = 'red';
+                return;
+            }
+    
+            if (password.length < 8) {
+                messageElement.textContent = 'Password must be at least 8 characters long.';
+                messageElement.style.color = 'red';
+                return;
+            }
+    
+            fetch('login.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ GmailAccount, password }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.success) {
+                        messageElement.textContent = 'Login successful!';
+                        messageElement.style.color = 'green';
+                        setTimeout(() => (window.location.href = 'home.php'), 1000);
+                    } else {
+                        messageElement.textContent = 'Error: ' + data.message;
+                        messageElement.style.color = 'red';
+                    }
+                })
+                .catch(() => {
+                    messageElement.textContent = 'An error occurred. Please try again.';
+                    messageElement.style.color = 'red';
+                });
+        });
+    </script>
+    
+</body>
+
+    
+    <!-- CSS for the modal -->
+    <style>
+        /* Base Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dim background */
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: lightblue; /* White background */
+  margin: 50% auto; /* Centered vertically */
+  padding: 20px;
+  border-radius: 10px;
+  width: 70%;
+  max-width: 300px; /* Maximum width */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  text-align: center;
+  animation: fadeIn 0.4s ease; /* Smooth entry animation */
+}
+
+.modal-content .close {
+    position: absolute;
+   
+    right: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    background: rgba(255, 255, 255, 0.9); /* Add light background for visibility */
+    padding: 5px; /* Add padding for clickable area */
+    border-radius: 50%; /* Optional: make it circular */
+    z-index: 1000; /* Ensure it appears above other content */
+    cursor: pointer;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+  
+
+.modal-content .close:hover {
+  color: #ff4d4d;
+}
+
+/* Form Inputs */
+.modal-content input[type="email"],
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+  width: calc(90% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus {
+  border-color: #4caf50; /* Highlighted border */
+}
+
+/* Buttons */
+.modal-content button {
+  width: 90%;
+  padding: 12px;
+  background-color: #4caf50; /* Green button */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
+
+/* Reset Message */
+#resetMessage {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ff4d4d; /* Red error or alert text */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .modal-content {
+      width: 95%; /* Wider for smaller screens */
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.9);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+  </style>
+    
+</body>
+</html>

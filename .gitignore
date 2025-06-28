@@ -1,0 +1,16 @@
+# Environment variables
+.env
+
+# Large files
+cloudflared.exe
+
+# Logs
+*.log
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# IDE files
+.vscode/
+.idea/

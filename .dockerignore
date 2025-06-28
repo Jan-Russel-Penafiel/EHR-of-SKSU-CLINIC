@@ -1,0 +1,71 @@
+# Git files
+.git
+.gitignore
+.github
+
+# Docker files
+.dockerignore
+docker-compose.yml
+Dockerfile
+*.Dockerfile
+
+# Documentation files
+*.md
+*.pdf
+*.docx
+*.pptx
+
+# Environment files
+.env*
+!.env.example
+
+# Local development files
+.vscode/
+.idea/
+.netlify/
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Build artifacts
+dist/
+build/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Large files
+*.zip
+*.gz
+*.tar
+*.rar
+
+# IDE files
+**/.classpath
+**/.project
+**/.settings
+**/.toolstarget
+**/.vs
+**/.vscode
+**/*.*proj.user
+**/*.dbmdl
+**/*.jfm
+**/bin
+**/charts
+**/compose*
+**/npm-debug.log
+**/obj
+**/secrets.dev.yaml
+**/values.dev.yaml
+LICENSE
+README.md
+
+# Keep composer files
+!composer.json
+!composer.lock

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Health Guide</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+            color: #333;
+            font-size: 16px;
+        }
+    
+        /* Header Section */
+        header {
+            background-color: #5cb85c;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+    
+        header p {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+    
+        /* Main Container */
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 5px auto;
+            padding: 20px;
+        }
+    
+        /* Guidelines Section */
+        .guidelines {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+    
+        .guidelines h2 {
+            font-size: 26px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+    
+        /* Search Bar */
+        .search-bar {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+    
+        .search-bar:focus {
+            outline: none;
+            border-color: #5cb85c;
+            background-color: #fff;
+        }
+    
+        /* Illness List Styles */
+        .illness-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+    
+        .illness-list li {
+            background-color: #ffffff;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+    
+        .illness-list li:hover {
+            background-color: #eaf1e3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+    
+        .illness-list li h3 {
+            font-size: 22px;
+            margin: 0;
+            color: #333;
+            font-weight: 600;
+        }
+    
+        .illness-list li p {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+    
+   
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+    
+            header {
+                padding: 15px 0;
+            }
+    
+            header h1 {
+                font-size: 24px;
+            }
+    
+            .guidelines h2 {
+                font-size: 24px;
+            }
+    
+            .illness-list li h3 {
+                font-size: 20px;
+            }
+    
+            .illness-list li p {
+                font-size: 14px;
+            }
+    
+            .search-bar {
+                font-size: 14px;
+                padding: 12px 16px;
+            }
+        }
+    </style>
+    
+<body>
+
+
+
+<div class="container">
+    <div class="guidelines">
+        <h2>What To Do If You Feel Unwell</h2>
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search for an illness..." onkeyup="searchIllness()">
+        <ul class="illness-list" id="illnessList">
+            <li>
+                <h3>Cold/Flu</h3>
+                <p>If you have symptoms like a sore throat, coughing, or a runny nose, rest and stay hydrated. Make sure to wear a mask to prevent spreading the illness. Visit the school clinic if symptoms worsen.</p>
+            </li>
+            <li>
+                <h3>Headache</h3>
+                <p>If you have a headache, try to rest in a quiet, dark environment. Drink plenty of water and avoid loud noises. If the headache persists, visit the school clinic for further assessment.</p>
+            </li>
+            <li>
+                <h3>Fever</h3>
+                <p>If you have a fever (above 100°F or 38°C), make sure to rest, hydrate, and take fever-reducing medication if necessary. If the fever lasts more than 24 hours or is very high, visit the clinic for medical advice.</p>
+            </li>
+            <li>
+                <h3>Stomachache</h3>
+                <p>If you experience stomach pain or nausea, rest and avoid eating heavy meals. Drink clear fluids to stay hydrated. If symptoms persist or worsen, see the school nurse or clinic staff.</p>
+            </li>
+            <li>
+                <h3>Rashes</h3>
+                <p>If you notice a rash, avoid scratching and apply soothing lotion if necessary. If the rash is severe or spreading, visit the school clinic to rule out any contagious conditions.</p>
+            </li>
+            <li>
+                <h3>Diarrhea</h3>
+                <p>If you have diarrhea, drink plenty of fluids to stay hydrated. Avoid consuming dairy, fatty, or spicy foods. Rest and monitor for any signs of dehydration. If it persists for more than 2 days, seek medical attention.</p>
+            </li>
+            <li>
+                <h3>Allergic Reactions</h3>
+                <p>If you experience itching, swelling, hives, or difficulty breathing after being exposed to an allergen, use an antihistamine or an epinephrine auto-injector if prescribed. Seek immediate medical help if symptoms are severe.</p>
+            </li>
+            <li>
+                <h3>Sinus Infection</h3>
+                <p>If you have symptoms like facial pain, nasal congestion, and post-nasal drip, try using a saline nasal spray, drinking plenty of fluids, and resting. If symptoms last more than 10 days or worsen, consult with the clinic.</p>
+            </li>
+            <li>
+                <h3>Sprains or Strains</h3>
+                <p>If you experience a sprain or strain, rest the affected area, elevate it, and apply ice to reduce swelling. If pain persists, consider visiting the clinic for an evaluation.</p>
+            </li>
+            <li>
+                <h3>Conjunctivitis (Pink Eye)</h3>
+                <p>If you experience redness, itching, or discharge from the eyes, avoid touching your eyes, and wash your hands frequently. Use a cold compress to soothe irritation. Visit the school clinic if symptoms worsen.</p>
+            </li>
+            <li>
+                <h3>Chest Pain</h3>
+                <p>If you experience chest pain, especially if it's accompanied by difficulty breathing or dizziness, seek immediate medical attention. Don't ignore chest pain, as it could be a sign of a serious condition.</p>
+            </li>
+            <li>
+                <h3>Cuts or Wounds</h3>
+                <p>If you sustain a cut or wound, clean the area with soap and water, apply antiseptic, and cover with a sterile bandage. For deep or severe wounds, seek medical attention to prevent infection.</p>
+            </li>
+            <li>
+                <h3>Fatigue</h3>
+                <p>If you're feeling unusually tired, make sure you're getting enough sleep, eating well, and managing stress. If fatigue persists, visit the school clinic for a checkup.</p>
+            </li>
+            <li>
+                <h3>Ear Infections</h3>
+                <p>If you experience pain, drainage, or fullness in the ear, avoid inserting anything into the ear canal. Try a warm compress to relieve pain. If symptoms persist for more than 48 hours or worsen, consult the clinic.</p>
+            </li>
+            <li>
+                <h3>COVID-19 Symptoms</h3>
+                <p>If you have symptoms such as fever, cough, shortness of breath, fatigue, or loss of taste/smell, isolate yourself from others and seek medical advice. Take a COVID-19 test and inform your school clinic for further instructions.</p>
+            </li>
+            <li>
+                <h3>Urinary Tract Infection (UTI)</h3>
+                <p>If you experience painful urination, frequent urination, or lower abdominal pain, drink plenty of water and avoid delaying urination. Visit the clinic if symptoms persist, as UTIs require medical treatment.</p>
+            </li>
+            <li>
+                <h3>Influenza (Flu)</h3>
+                <p>If you have symptoms like chills, body aches, sore throat, and fatigue, rest and hydrate. You can take antiviral medication if prescribed. If symptoms worsen, consult the clinic for evaluation.</p>
+            </li>
+            <li>
+                <h3>Asthma</h3>
+                <p>If you experience wheezing, shortness of breath, or tightness in the chest, use your inhaler as prescribed. If symptoms don't improve, seek medical help immediately to prevent complications.</p>
+            </li>
+            <li>
+                <h3>Migraine</h3>
+                <p>If you suffer from a migraine, find a quiet, dark room, and take pain relief medications as prescribed. Drink water and avoid strong odors or bright lights. If migraines become frequent, seek professional advice.</p>
+            </li>
+            <li>
+                <h3>Dehydration</h3>
+                <p>If you feel thirsty, dizzy, or have dry skin, you may be dehydrated. Drink water or electrolyte beverages and avoid caffeinated or sugary drinks. Rest and avoid strenuous activity. If symptoms persist, seek medical advice.</p>
+            </li>
+            <li>
+                <h3>Heat Stroke</h3>
+                <p>If you experience confusion, dizziness, nausea, or high body temperature due to prolonged exposure to heat, move to a cooler place, hydrate, and apply cool cloths. If symptoms don't improve, seek medical help immediately.</p>
+            </li>
+            <li>
+                <h3>Gastroenteritis (Stomach Flu)</h3>
+                <p>If you experience vomiting, diarrhea, or stomach cramps, stay hydrated with clear fluids. Avoid solid foods until symptoms improve. If symptoms last for more than 48 hours, visit the clinic.</p>
+            </li>
+            <li>
+                <h3>Pneumonia</h3>
+                <p>If you have symptoms like a cough, fever, difficulty breathing, or chest pain, rest and stay hydrated. See the doctor as pneumonia can be a serious infection.</p>
+            </li>
+
+            <li>
+                <h3>Back Pain</h3>
+                <p>If you experience back pain, avoid heavy lifting and try to maintain good posture. Apply heat or cold to the affected area and rest. If pain persists, visit the school clinic for evaluation.</p>
+            </li>
+            <li>
+                <h3>Blood Pressure Fluctuations</h3>
+                <p>If you experience symptoms such as dizziness, headaches, or blurred vision, your blood pressure may be fluctuating. Check your blood pressure and rest. If symptoms persist, seek medical attention.</p>
+            </li>
+            <li>
+                <h3>Chronic Fatigue Syndrome</h3>
+                <p>If you're feeling constantly fatigued despite adequate rest and sleep, this could be a sign of chronic fatigue syndrome. Consult the school clinic to discuss your symptoms and get a proper diagnosis.</p>
+            </li>
+            <li>
+                <h3>Gallstones</h3>
+                <p>If you have upper abdominal pain, nausea, and vomiting, it could be a sign of gallstones. Rest and avoid fatty foods. Visit the clinic for diagnosis and treatment options.</p>
+            </li>
+            <li>
+                <h3>Kidney Stones</h3>
+                <p>If you experience severe back or abdominal pain, blood in your urine, or difficulty urinating, you might have kidney stones. Drink plenty of water, but seek immediate medical help if pain is unbearable.</p>
+            </li>
+            <li>
+                <h3>Thyroid Problems</h3>
+                <p>If you experience weight changes, fatigue, or changes in your skin and hair, it could be related to thyroid issues. Consult the clinic for a thyroid test and further treatment options.</p>
+            </li>
+            <li>
+                <h3>Osteoarthritis</h3>
+                <p>If you have joint pain, stiffness, and swelling, it could be osteoarthritis. Avoid overexerting the affected joints and seek medical advice from the school clinic for pain management.</p>
+            </li>
+            <li>
+                <h3>Chickenpox</h3>
+                <p>If you notice a rash with blisters, along with fever or tiredness, you may have chickenpox. Stay isolated to avoid spreading it and visit the school clinic for further guidance.</p>
+            </li>
+            <li>
+                <h3>Hernia</h3>
+                <p>If you feel a lump in your abdomen or groin area with pain or discomfort, it could be a hernia. Rest and avoid heavy lifting, and consult the clinic for proper diagnosis and treatment.</p>
+            </li>
+            <li>
+                <h3>Sleep Apnea</h3>
+                <p>If you experience snoring, gasping, or choking during sleep, along with excessive daytime fatigue, you may have sleep apnea. Visit the clinic for a sleep study or further examination.</p>
+            </li>
+            <li>
+                <h3>Hyperthyroidism</h3>
+                <p>If you experience rapid weight loss, rapid heartbeat, sweating, or irritability, it could be a sign of hyperthyroidism. Visit the clinic for a thyroid function test and treatment options.</p>
+            </li>
+            <li>
+                <h3>Gout</h3>
+                <p>If you experience severe pain and swelling, especially in the big toe, it may be gout. Rest and elevate the affected joint, and seek medical advice from the clinic for further treatment.</p>
+            </li>
+            <li>
+                <h3>Shingles</h3>
+                <p>If you have a painful rash that appears on one side of your body, it may be shingles. Visit the clinic immediately as early treatment can prevent complications.</p>
+            </li>
+            <li>
+                <h3>Anxiety</h3>
+                <p>If you experience excessive worry, restlessness, or physical symptoms like sweating and rapid heartbeat, it could be anxiety. Practice relaxation techniques, and consider seeking advice from the clinic for mental health support.</p>
+            </li>
+            <li>
+                <h3>Depression</h3>
+                <p>If you feel persistent sadness, loss of interest, or have difficulty concentrating, it may be a sign of depression. Speak with the school clinic or a counselor for support and possible treatment.</p>
+            </li>
+            <li>
+                <h3>Hives (Urticaria)</h3>
+                <p>If you notice raised, itchy welts on your skin, it could be hives. Avoid scratching and use antihistamines. If symptoms worsen, seek medical advice from the clinic.</p>
+            </li>
+            <li>
+                <h3>Food Poisoning</h3>
+                <p>If you have nausea, vomiting, diarrhea, and stomach cramps after eating, you may have food poisoning. Stay hydrated and rest. If symptoms are severe or last more than 48 hours, seek medical attention.</p>
+            </li>
+            <li>
+                <h3>Vertigo</h3>
+                <p>If you experience a spinning sensation, nausea, or dizziness, it may be vertigo. Rest and avoid sudden movements. If symptoms persist, visit the school clinic for further evaluation.</p>
+            </li>
+            <li>
+                <h3>Parkinson's Disease</h3>
+                <p>If you experience tremors, stiffness, or difficulty walking, it may be related to Parkinson's disease. Consult the clinic for a proper diagnosis and treatment plan.</p>
+            </li>
+            <li>
+                <h3>Multiple Sclerosis (MS)</h3>
+                <p>If you have symptoms such as numbness, fatigue, and muscle weakness, it could be multiple sclerosis. Seek medical attention for a diagnosis and treatment options.</p>
+            </li>
+            <li>
+                <h3>Peptic Ulcer</h3>
+                <p>If you experience a burning sensation in your stomach, bloating, or nausea, it could be a peptic ulcer. Avoid spicy and acidic foods, and visit the clinic for proper diagnosis and treatment.</p>
+            </li>
+            <li>
+                <h3>Diabetic Ketoacidosis</h3>
+                <p>If you experience excessive thirst, frequent urination, nausea, or confusion, it may be diabetic ketoacidosis. Seek immediate medical attention if symptoms occur.</p>
+            </li>
+            <li>
+                <h3>Hypoglycemia (Low Blood Sugar)</h3>
+                <p>If you feel shaky, lightheaded, or confused, you may be experiencing low blood sugar. Eat a small snack with carbs to raise your blood sugar and seek medical advice if symptoms persist.</p>
+            </li>
+            <li>
+                <h3>High Cholesterol</h3>
+                <p>If you experience chest pain, dizziness, or shortness of breath, it could be related to high cholesterol. Visit the clinic for a cholesterol test and discuss treatment options.</p>
+            </li>
+            <li>
+                <h3>Hemorrhoids</h3>
+                <p>If you experience pain, itching, or bleeding during bowel movements, it could be hemorrhoids. Drink plenty of water, eat fiber-rich foods, and visit the clinic for evaluation if symptoms persist.</p>
+            </li>
+            <li>
+                <h3>Acid Reflux (GERD)</h3>
+                <p>If you experience heartburn, regurgitation, or chest discomfort, it may be acid reflux or GERD. Avoid large meals, spicy foods, and lying down after eating. Consult the clinic for treatment.</p>
+            </li>
+            <li>
+                <h3>Sinusitis</h3>
+                <p>If you experience facial pain, pressure, nasal congestion, or green/yellow mucus, it may be sinusitis. Use a saline nasal spray, hydrate, and visit the clinic for further treatment.</p>
+            </li>
+            <li>
+                <h3>Blood Clots</h3>
+                <p>If you experience swelling, pain, or redness in your legs, it could be a blood clot. Seek medical attention immediately, as untreated blood clots can lead to serious complications.</p>
+            </li>
+            <li>
+                <h3>Stroke</h3>
+                <p>If you experience sudden weakness, difficulty speaking, or numbness on one side of your body, it could be a stroke. Seek immediate medical attention to minimize damage and complications.</p>
+            </li>
+            <li>
+                <h3>Anemia</h3>
+                <p>If you feel fatigued, pale, or short of breath, you might have anemia. Eat iron-rich foods and consult the clinic for a blood test to confirm the diagnosis.</p>
+            </li>
+            <li>
+                <h3>Lung Cancer</h3>
+                <p>If you experience a persistent cough, difficulty breathing, chest pain, or coughing up blood, it could be a sign of lung cancer. Seek immediate medical attention for proper diagnosis and treatment.</p>
+            </li>
+            <li>
+                <h3>Celiac Disease</h3>
+                <p>If you have abdominal pain, bloating, and diarrhea after eating foods containing gluten, you may have celiac disease. Avoid gluten and consult the clinic for further testing and treatment.</p>
+            </li>
+            <li>
+                <h3>Leukemia</h3>
+                <p>If you experience unusual fatigue, unexplained weight loss, frequent infections, or bruising, you might have leukemia. Visit the clinic for a blood test and further evaluation.</p>
+            </li>
+            <li>
+                <h3>Ovarian Cysts</h3>
+                <p>If you experience pelvic pain, bloating, or changes in your menstrual cycle, it could be an ovarian cyst. Visit the clinic for an ultrasound and further diagnosis.</p>
+            </li>
+            <li>
+                <h3>Hepatitis</h3>
+                <p>If you experience jaundice (yellowing of the skin or eyes), fatigue, nausea, and abdominal pain, it could be hepatitis. Seek medical advice immediately for diagnosis and treatment.</p>
+            </li>
+            <li>
+                <h3>Tuberculosis (TB)</h3>
+                <p>If you have a persistent cough, weight loss, night sweats, or coughing up blood, it could be tuberculosis. Seek immediate medical attention for a chest X-ray and treatment.</p>
+            </li>
+            <li>
+                <h3>Epilepsy</h3>
+                <p>If you experience seizures, loss of consciousness, or jerky movements, it could be epilepsy. Visit the clinic for a proper diagnosis and to discuss treatment options.</p>
+            </li>
+            <li>
+                <h3>Gingivitis</h3>
+                <p>If you notice swollen or bleeding gums, it may be gingivitis. Brush your teeth regularly, floss, and visit the dentist for a cleaning if symptoms persist.</p>
+            </li>
+            <li>
+                <h3>Gallbladder Infection</h3>
+                <p>If you experience fever, nausea, vomiting, and upper right abdominal pain, it could be a gallbladder infection. Seek medical attention for diagnosis and treatment.</p>
+            </li>
+            <li>
+                <h3>Rheumatoid Arthritis</h3>
+                <p>If you experience joint pain, swelling, and stiffness that worsens in the morning, it could be rheumatoid arthritis. Visit the clinic for an evaluation and treatment options.</p>
+            </li>
+            <li>
+                <h3>Chronic Obstructive Pulmonary Disease (COPD)</h3>
+                <p>If you experience shortness of breath, chronic cough, or wheezing, it could be COPD. Avoid smoking, and consult the clinic for lung function tests and treatment.</p>
+            </li>
+            <li>
+                <h3>Scabies</h3>
+                <p>If you experience itching, redness, or a rash, it could be scabies, caused by mites. Avoid scratching, and seek medical treatment to manage the infection and prevent it from spreading.</p>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<script>
+    function searchIllness() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let illnessList = document.getElementById('illnessList');
+        let illnesses = illnessList.getElementsByTagName('li');
+        
+        for (let i = 0; i < illnesses.length; i++) {
+            let illness = illnesses[i];
+            let illnessName = illness.getElementsByTagName('h3')[0].textContent.toLowerCase();
+            if (illnessName.indexOf(input) > -1) {
+                illness.style.display = '';
+            } else {
+                illness.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
